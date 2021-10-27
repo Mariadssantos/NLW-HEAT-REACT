@@ -1,8 +1,8 @@
+import { useEffect, useState } from 'react';
 import { api } from '../../services/api';
 
 import styles from './styles.module.scss';
 import LogoImg from '../../assets/logo.svg';
-import { useEffect, useState } from 'react';
 
 
 type Message = {
@@ -22,29 +22,29 @@ export function MessageList() {
             setMessages(response.data);
         })
     }, [])
-    return(
-     <div className={styles.messageListWrapper}> 
+    return (
+        <div className={styles.messageListWrapper}>
 
-     <img src={LogoImg} alt="Logo-DoWhile"  />
+            <img src={LogoImg} alt="Logo-DoWhile" />
 
-     <ul className={styles.messageList}>
-         {messages.map(message => {
+            <ul className={styles.messageList}>
+                {messages.map(message => {
 
-            return (
-         <li key={message.id} className={styles.message}>
-            <p className={styles.messageContent}>{message.text}</p>
-            <div className={styles.messageUser}>
-                <div className={styles.userImage}>
-                <img src={message.user.avatar_url} alt={message.user.name} />
+                    return (
+                        <li key={message.id} className={styles.message}>
+                            <p className={styles.messageContent}>{message.text}</p>
+                            <div className={styles.messageUser}>
+                                <div className={styles.userImage}>
+                                    <img src={message.user.avatar_url} alt={message.user.name} />
 
-                </div>
+                                </div>
 
-                <span>{message.user.name}</span>
-            </div>
-         </li>
-         );
-         })}
-     </ul>
-     </div>
-    )  
+                                <span>{message.user.name}</span>
+                            </div>
+                        </li>
+                    );
+                })}
+            </ul>
+        </div>
+    )
 }
